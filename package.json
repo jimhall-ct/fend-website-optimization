@@ -1,0 +1,15 @@
+{
+  "name": "Website_Optimization",
+  "version": "0.0.1",
+  "description": "Udacity Website Optimization Project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimhall-ct/fend-website-optimization.git"
+  },
+  "author": "Jim Hall",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8"
+  }
+}
