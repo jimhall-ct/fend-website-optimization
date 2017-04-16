@@ -67,4 +67,4 @@ The default task is responsible for copying and minifying the css, javascript, a
 ```shell
 gulp resize_images
 ```
-This task will load all images (png, jpg, gif) from development directories, resize them, move them to the production directories . The task by default will create images of sizes (120, 240, 360, 480, 640, 800, 1000) with a quality of 0.5, no images will be upscaled.
+This task will load all images (png, jpg, gif) from development directories, resize them, move them to their production directories . The task by default will create images of sizes (120, 240, 360, 480, 640, 800, 1000) with a quality of 0.5, no images will be upscaled.
