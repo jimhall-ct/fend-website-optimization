@@ -423,6 +423,7 @@ var resizePizzas = function (size) {
 
     // Iterates through pizza elements on the page and changes their widths
     function changePizzaSizes(size) {
+
         switch (size) {
             case "1":
                 newWidth = 25;
@@ -437,6 +438,7 @@ var resizePizzas = function (size) {
                 console("Invalid Pizza Size");
         }
         var randPizzas = document.querySelectorAll(".randomPizzaContainer")
+
         for (var i = 0; i < randPizzas.length; i++) {
             randPizzas[i].style.width = newWidth + "%";
         }
@@ -489,6 +491,7 @@ function updatePositions() {
     frame++;
     window.performance.mark("mark_start_frame");
 
+    // Store only items that are visible
     var viewportItems = items.filter(isInViewport);
     var scrollTop = document.body.scrollTop;
 
@@ -497,6 +500,7 @@ function updatePositions() {
         viewportItems[i].style.left = viewportItems[i].basicLeft + 100 * phase + 'px';
     }
 
+    // Function to check if any portion of the pizza element is visible on the page
     function isInViewport(element) {
         var box = element.getBoundingClientRect();
         return (
@@ -534,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function () {
         elem.style.top = (Math.floor(i / cols) * s) + 'px';
         document.querySelector("#movingPizzas1").appendChild(elem);
     }
-    // moving pizza items converted into an Array
+    // Get moving pizza items and convert them into an Array
     items = Array.prototype.slice.apply(document.querySelectorAll('.mover'));
     updatePositions();
 });
