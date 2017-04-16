@@ -47,7 +47,12 @@ production/views/pizza.html
 
 #### Setup the environment
 
-1. Navigate to the root directory containing the package.json file.
+Requirements: [NPM] (https://nodejs.org), [ImageMagick](https://www.imagemagick.org/script/download.php)
+
+1. From the command line, navigate to the root directory containing the package.json file
+```shell
+cd <path-to-package.json>
+```
 2. Install the developer dependencies:
 ```shell
 npm install
@@ -56,3 +61,4 @@ npm install
 ```shell
 gulp
 ```
+The default task
