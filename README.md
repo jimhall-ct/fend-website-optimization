@@ -49,6 +49,10 @@ production/views/pizza.html
 
 1. Navigate to the root directory containing the package.json file.
 2. Install the developer dependencies:
-<code>npm install</code>
+```shell
+npm install
+```
 3. Run default gulp task
-<code>gulp</code>
+```shell
+gulp
+```
