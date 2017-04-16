@@ -43,7 +43,7 @@ gulp.task('html', function() {
 });
 
 var resizeImageTasks = [];
-[120, 240, 360, 480, 640, 760, 880, 1000].forEach(function(size) {
+[120, 240, 360, 480, 640, 800, 1000].forEach(function(size) {
    var resizeImageTask = 'resize_' + size;
 
     gulp.task(resizeImageTask, function() {
@@ -66,7 +66,6 @@ var resizeImageTasks = [];
     });
     resizeImageTasks.push(resizeImageTask);
 });
-
 
 gulp.task('watch', function() {
     gulp.watch(jsSources, ['js']);
