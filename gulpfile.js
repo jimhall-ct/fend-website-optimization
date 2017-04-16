@@ -32,7 +32,12 @@ gulp.task('css', function() {
 
 gulp.task('html', function() {
     gulp.src(htmlSources)
-        .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(htmlmin({
+            collapseWhitespace: true,
+            minifyCSS: true,
+            minifyJS: true,
+            removeComments: true
+        }))
         .pipe(gulp.dest('production'))
         .pipe(connect.reload())
 });
