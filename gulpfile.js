@@ -11,26 +11,22 @@ var gulp = require('gulp'),
     imagemin = require('gulp-imagemin'),
     pngcrush = require('imagemin-pngcrush');
 
-var jsSources = ['development/js/perfmatters.js'];
-var cssSources = ['development/css/*.css'];
-var htmlSources = ['development/*.html'];
-var imageSources = [
-    'development/img/**/*.*',
-    'development/views/images/**/*.*'
-];
+var jsSources = ['development/**/*.js'];
+var cssSources = ['development/**/*.css'];
+var htmlSources = ['development/**/*.html'];
+var imageSources = ['development/**/*.{jpg,png,gif}'];
 
 gulp.task('js', function() {
     gulp.src(jsSources)
-        .pipe(concat('perfmatters.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('production/js'))
+        .pipe(gulp.dest('production'))
         .pipe(connect.reload())
 });
 
 gulp.task('css', function() {
     gulp.src(cssSources)
         .pipe(cssmin())
-        .pipe(gulp.dest('production/css'))
+        .pipe(gulp.dest('production'))
         .pipe(connect.reload())
 });
 
@@ -42,7 +38,7 @@ gulp.task('html', function() {
 });
 
 var resizeImageTasks = [];
-[120, 240, 360, 480, 640, 760].forEach(function(size) {
+[120, 240, 360, 480, 640, 760, 880, 1000].forEach(function(size) {
    var resizeImageTask = 'resize_' + size;
 
     gulp.task(resizeImageTask, function() {
@@ -61,7 +57,7 @@ var resizeImageTasks = [];
             .pipe(rename(function(path) {
                 path.basename += '_' + size;
             }))
-            .pipe(gulp.dest('production/img'))
+            .pipe(gulp.dest('production'))
     });
     resizeImageTasks.push(resizeImageTask);
 });
