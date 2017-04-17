@@ -42,6 +42,7 @@ gulp.task('html', function() {
         .pipe(connect.reload())
 });
 
+// Image resizer option
 var resizeImageTasks = [];
 [120, 240, 360, 480, 640, 800, 1000].forEach(function(size) {
    var resizeImageTask = 'resize_' + size;
@@ -67,11 +68,16 @@ var resizeImageTasks = [];
     resizeImageTasks.push(resizeImageTask);
 });
 
+gulp.task('copy_images', function() {
+    gulp.src(imageSources)
+        .pipe(gulp.dest('production'))
+});
+
 gulp.task('watch', function() {
     gulp.watch(jsSources, ['js']);
     gulp.watch(htmlSources, ['html']);
     gulp.watch(cssSources, ['css']);
-    gulp.watch(imageSources, ['images']);
+    gulp.watch(imageSources, ['copy_images']);
 });
 
 gulp.task('connect', function() {
@@ -82,4 +88,4 @@ gulp.task('connect', function() {
 });
 
 gulp.task('resize_images', resizeImageTasks);
-gulp.task('default', ['js', 'css', 'html', 'connect', 'watch']);
+gulp.task('default', ['js', 'css', 'html', 'copy_images', 'connect', 'watch']);
