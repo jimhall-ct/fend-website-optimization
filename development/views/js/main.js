@@ -437,7 +437,7 @@ var resizePizzas = function (size) {
             default:
                 console("Invalid Pizza Size");
         }
-        var randPizzas = document.querySelectorAll(".randomPizzaContainer")
+        var randPizzas = document.getElementsByClassName("randomPizzaContainer")
 
         for (var i = 0; i < randPizzas.length; i++) {
             randPizzas[i].style.width = newWidth + "%";
@@ -456,8 +456,8 @@ var resizePizzas = function (size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+var pizzasDiv = document.getElementById("randomPizzas");
 for (var i = 2; i < 100; i++) {
-    var pizzasDiv = document.getElementById("randomPizzas");
     pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -495,9 +495,13 @@ function updatePositions() {
     var viewportItems = items.filter(isInViewport);
     var scrollTop = document.body.scrollTop;
 
+    var phase = [];
+    for (var i = 0; i < 5; i++) {
+        phase.push(Math.sin(scrollTop / 1250 + i) * 100)
+    }
+
     for (var i = 0; i < viewportItems.length; i++) {
-        var phase = Math.sin((scrollTop / 1250) + (i % 5));
-        viewportItems[i].style.left = viewportItems[i].basicLeft + 100 * phase + 'px';
+        viewportItems[i].style.left = viewportItems[i].basicLeft + phase[i % 5] + 'px';
     }
 
     // Function to check if any portion of the pizza element is visible on the page
@@ -528,7 +532,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function () {
     var cols = 8;
     var s = 256;
-    for (var i = 0; i < 200; i++) {
+    for (var i = 0; i < 100; i++) {
         var elem = document.createElement('img');
         elem.className = 'mover';
         elem.src = "images/pizza.png";
